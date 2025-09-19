@@ -174,5 +174,24 @@ NAS: with 4 HDDs
 />
 
 ---
+
+## Why did I choose Proxmox?
+
+Alternatives:
+
+- kubernetes
+- nix
+
+Both are currently too complex for me.
+
+I picked a different rabbit hole:
+
+- Proxmox with VMs and
+  - with Ansible
+  - with Terraform (OpenTofu)
+
+I have a lot more to say about this decision, but it will be postponed to another slide in the future.
+
+---
 src: ./pages/99-end.md
 ---
