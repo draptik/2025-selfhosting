@@ -147,17 +147,18 @@ flowchart LR
 - Let's talk about hardware
 
 ---
-layout: image-right
-image: "/images/nas.png"
----
 
 ## Hardware (1/2): NAS
 
-- NAS: with 4 HDDs
-  - costs: 1000 EUR (incl. HDDs)
+NAS: with 4 HDDs
+  - costs: mainly the HDDs (1000 EUR)
   - space: 8TB
   - Synology's "RAID-5"
 
+<img
+  class="absolute bottom-20 right-10 w-100"
+  src="/images/nas.png"
+/>
 ---
 
 ## Hardware (2/2): Server
@@ -168,7 +169,7 @@ image: "/images/nas.png"
 - SSD: **1TB** M.2 NVMe PCIe 3.0 M.2 2280 (**Max 2TB**)
 
 <img
-  class="absolute bottom-20 right-10 w-100"
+  class="absolute bottom-20 right-10 w-125"
   src="/images/homeserver.png"
 />
 
