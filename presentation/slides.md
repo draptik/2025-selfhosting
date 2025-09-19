@@ -107,6 +107,71 @@ flowchart LR
   hoster -- *.cloud.mydomain.com --> homeserver
 ```
 
+- I learned something about `CNAME` and `A` entries
+
+---
+
+## Home infrastructure (1/x)
+
+```mermaid
+flowchart LR
+
+  cloud("internet")
+  router("FritzBox")
+  pihole("Pi-hole w/ WireGuard & DNS")
+  nas("Synology NAS")
+  proxmox("Proxmox")
+
+  cloud --> router
+  router --> pihole
+  pihole --> proxmox
+  pihole --> nas
+  proxmox --> nas
+```
+
+---
+
+## Home infrastructure (2/x)
+
+```mermaid
+flowchart LR
+
+  nas("NAS")
+  proxmox("Proxmox")
+
+  proxmox --> nas
+```
+
+
+- But wait, there is a NAS and a Proxmox server?
+- Let's talk about hardware
+
+---
+layout: image-right
+image: "/images/nas.png"
+---
+
+## Hardware (1/2): NAS
+
+- NAS: with 4 HDDs
+  - costs: 1000 EUR (incl. HDDs)
+  - space: 8TB
+  - Synology's "RAID-5"
+
+---
+
+## Hardware (2/2): Server
+
+- costs: 320 EUR
+- CPU: Intel Alder Lake N95
+- RAM: **32GB** DDR4 (3200MHz)
+- SSD: **1TB** M.2 NVMe PCIe 3.0 M.2 2280 (**Max 2TB**)
+
+<img
+  class="absolute bottom-20 right-10 w-100"
+  src="/images/homeserver.png"
+/>
+
 ---
 src: ./pages/99-end.md
 ---
