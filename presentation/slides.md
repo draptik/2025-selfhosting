@@ -175,6 +175,14 @@ NAS: with 4 HDDs
 
 ---
 
+## Access to Homeserver
+
+- VPN / Wireguard
+- Public access
+- Geoblocking
+
+---
+
 ## Why did I choose Proxmox?
 
 Alternatives:
@@ -189,8 +197,55 @@ I picked a different rabbit hole:
 - Proxmox with VMs and
   - with Ansible
   - with Terraform (OpenTofu)
+- Proxmox VMs provide natural containment -> safety feature
 
-I have a lot more to say about this decision, but it will be postponed to another slide in the future.
+---
+
+## Overview
+
+```mermaid
+flowchart LR
+
+  nas("NAS")
+  proxmox("Proxmox")
+  vm("VM")
+  docker("Docker")
+  podman("Podman")
+  comment@{ shape: notch-rect, label: "Update, Setup
+(i.e. diun/watchtower, Ansible, Terraform)" }
+  comment2@{ shape: notch-rect, label: "Backup / Restore
+(i.e. restic)"}
+
+  subgraph nas
+  subgraph proxmox
+  subgraph vm
+
+  subgraph docker
+  end
+
+  subgraph podman
+  end
+
+  end
+  end
+  end
+
+  comment --> nas
+  comment --> proxmox
+  comment --> vm
+  comment --> docker
+  comment --> podman
+
+  %% comment2 --> nas
+  %% comment2 --> proxmox
+  %% comment2 --> vm
+  %% comment2 --> docker
+  %% comment2 --> podman
+```
+
+---
+
+## Discussion
 
 ---
 src: ./pages/99-end.md
