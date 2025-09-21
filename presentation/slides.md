@@ -92,7 +92,7 @@ layout: two-cols-header
 
 ---
 
-## Domain Hosting
+## Domain Hosting (current state)
 
 ```mermaid
 flowchart LR
@@ -105,9 +105,34 @@ flowchart LR
   cloud -- *.mydomain.com --> hoster
   hoster -- *.wolke.mydomain.com --> hetzner
   hoster -- *.cloud.mydomain.com --> homeserver
+  homeserver -- DynDNS --> hoster
 ```
 
 - I learned something about `CNAME` and `A` entries
+
+---
+
+## Domain Hosting (alternative)
+
+Use a Virtual Private Server (VPS) to access Home server
+
+- Safer, but might involve extra costs
+
+```mermaid
+flowchart LR
+
+  cloud("internet")
+  hoster("Domain-Name hoster")
+  hetzner("☁️ Nextcloud (Hetzner)")
+  homeserver("🏠 Homeserver")
+  vps("VPS")
+
+  hoster -- *.wolke.mydomain.com --> hetzner
+  cloud -- *.mydomain.com --> hoster
+  hoster -- *.cloud.mydomain.com --> vps
+  vps -- WireGuard --> homeserver
+  homeserver -- DynDNS --> hoster
+```
 
 ---
 
@@ -149,10 +174,11 @@ flowchart LR
 
 ## Hardware (1/2): NAS
 
-NAS: with 4 HDDs
+NAS
 
-- costs: mainly the HDDs (1000 EUR)
-- space: 8TB
+- 4 HDDs
+- costs (mainly the HDDs): 1000 EUR
+- effective storage capacity: 8TB
 - Synology's "RAID-5"
 
 <img
@@ -166,7 +192,7 @@ NAS: with 4 HDDs
 - costs: 320 EUR
 - CPU: Intel Alder Lake N95
 - RAM: **32GB** DDR4 (3200MHz)
-- SSD: **1TB** M.2 NVMe PCIe 3.0 M.2 2280 (**Max 2TB**)
+- SSD: **1TB** M.2 NVMe PCIe 3.0 M.2 2280 **(Max 2TB)**
 
 <img
   class="absolute bottom-20 right-10 w-125"
@@ -175,7 +201,7 @@ NAS: with 4 HDDs
 
 ---
 
-## Access to Homeserver
+## Options for accessing Homeserver
 
 - VPN / Wireguard
 - Public access
@@ -198,6 +224,7 @@ I picked a different rabbit hole:
   - with Ansible
   - with Terraform (OpenTofu)
 - Proxmox VMs provide natural containment -> safety feature
+- Proxmox VMs provide an alternative backup strategy
 
 ---
 
@@ -206,41 +233,49 @@ I picked a different rabbit hole:
 ```mermaid
 flowchart LR
 
-  nas("NAS")
-  proxmox("Proxmox")
-  vm("VM")
-  docker("Docker")
-  podman("Podman")
-  comment@{ shape: notch-rect, label: "Update, Setup
-(i.e. diun/watchtower, Ansible, Terraform)" }
-  comment2@{ shape: notch-rect, label: "Backup / Restore
-(i.e. restic)"}
+  %% classes
+  classDef hidden fill:none,stroke:none;
 
-  subgraph nas
-  subgraph proxmox
-  subgraph vm
+  %% --- placement links first (so we know their indices) ---
+  proxmox --> spacer
+  spacer --> comment2
 
-  subgraph docker
+  %% --- hide the 2 placement links + 4 anchor links (indices 0..5) ---
+  linkStyle 0 opacity:0,stroke-width:0px
+  linkStyle 1 opacity:0,stroke-width:0px
+
+  comment@{ shape: notch-rect, label: "**Setup, Update/Monitoring**<br/>i.e. diun/watchtower, Ansible, Terraform" }
+  comment2@{ shape: notch-rect, label: "**Backup / Restore**<br/>(i.e. restic, Proxmox Backup, Terraform)"}
+  spacer(( )):::hidden
+
+  subgraph proxmox ["Proxmox Host"]
+    vms@{ shape: procs, label: "Virtual Machines" }
+    subgraph vm ["Virtual Machine x"]
+      subgraph docker ["Docker or Podman"]
+        subgraph app ["Application"]
+        end
+      end
+    end
   end
 
-  subgraph podman
-  end
+  %% Styles
+  style proxmox fill:#f0f8ff,stroke:#333,stroke-width:2px
+  style vm fill:#ffe4e1,stroke:#444,stroke-dasharray: 5 5
+  style vms fill:#ffe4e1,stroke:#444,stroke-dasharray: 5 5
+  style docker fill:#e6ffe6,stroke:#222
+  style spacer fill:none,stroke:none
 
-  end
-  end
-  end
-
-  comment --> nas
+  %% --- visible arrows (left fan-out in desired order) ---
   comment --> proxmox
   comment --> vm
   comment --> docker
-  comment --> podman
+  comment --> app
 
-  %% comment2 --> nas
-  %% comment2 --> proxmox
-  %% comment2 --> vm
-  %% comment2 --> docker
-  %% comment2 --> podman
+  %% Right-side links (via spacer)
+  comment2 --> proxmox
+  comment2 --> vm
+  comment2 --> docker
+  comment2 --> app
 ```
 
 ---
