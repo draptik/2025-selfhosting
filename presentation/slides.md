@@ -233,14 +233,14 @@ I picked a different rabbit hole:
 ```mermaid
 flowchart LR
 
-  %% classes
+  %% Classes
   classDef hidden fill:none,stroke:none;
 
-  %% --- placement links first (so we know their indices) ---
+  %% Placement links first (so we know their indices)
   proxmox --> spacer
   spacer --> comment2
 
-  %% --- hide the 2 placement links + 4 anchor links (indices 0..5) ---
+  %% Hide the 2 placement links + 4 anchor links (indices 0..5)
   linkStyle 0 opacity:0,stroke-width:0px
   linkStyle 1 opacity:0,stroke-width:0px
 
@@ -265,7 +265,7 @@ flowchart LR
   style docker fill:#e6ffe6,stroke:#222
   style spacer fill:none,stroke:none
 
-  %% --- visible arrows (left fan-out in desired order) ---
+  %% Left-side links
   comment --> proxmox
   comment --> vm
   comment --> docker
@@ -277,6 +277,14 @@ flowchart LR
   comment2 --> docker
   comment2 --> app
 ```
+
+---
+
+## TODOs
+
+- Setup VMs w/ Terraform
+- Add `fail2ban` to public facing `caddy`
+- Research Virtual Private Server (VPS) - esp. costs
 
 ---
 
