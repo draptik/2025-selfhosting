@@ -19,7 +19,7 @@ src: ./pages/00-title.md
 ---
 
 ---
-layout: image-right
+layout: image-left
 image: "/images/weird-network.png"
 ---
 
@@ -30,11 +30,15 @@ image: "/images/weird-network.png"
 - Saving money?
 
 ---
+layout: image-right
+image: "/images/learning.png"
+---
 
 ## Disclaimer
 
 - I am new to selfhosting
 - This is my learning experience
+- slowly reaching status "Enough to be dangerous" 😈
 
 ---
 layout: two-cols-header
@@ -57,8 +61,7 @@ layout: two-cols-header
 
 - initial hardware investment costs
 - maintenance of all infrastructure
-- availability
-- scaling
+- availability / scaling
 
 :: right ::
 
@@ -67,9 +70,9 @@ layout: two-cols-header
 #### Pros
 
 - PaaS / SaaS solutions
-- availability
-- scaling
+- availability / scaling
 - no hardware investment
+- easier setup
 
 #### Cons
 
@@ -104,19 +107,25 @@ flowchart LR
 
   cloud -- *.mydomain.com --> hoster
   hoster -- *.wolke.mydomain.com --> hetzner
-  hoster -- *.cloud.mydomain.com --> homeserver
-  homeserver -- DynDNS --> hoster
+  hoster -- (2) *.cloud.mydomain.com --> homeserver
+  homeserver -- (1) DynDNS --> hoster
+
+  style hetzner fill:#e6ffe6
+  style homeserver fill:#ffe4e1
+  style hoster fill:orange
 ```
 
-- I learned something about `CNAME` and `A` entries
+I learned something about
+
+- `CNAME` entries
+- `A` entries
+- wildcards
 
 ---
 
 ## Domain Hosting (alternative)
 
 Use a Virtual Private Server (VPS) to access Home server
-
-- Safer, but might involve extra costs
 
 ```mermaid
 flowchart LR
@@ -132,19 +141,24 @@ flowchart LR
   hoster -- *.cloud.mydomain.com --> vps
   vps -- WireGuard --> homeserver
   homeserver -- DynDNS --> hoster
+
+  style vps fill:#ffe4e1
 ```
+
+- on my "needs more research" list, maybe overkill?
+- Safer, but might involve extra costs
 
 ---
 
-## Home infrastructure (1/x)
+## Home infrastructure: Bird's eye view
 
 ```mermaid
 flowchart LR
 
   cloud("internet")
-  router("FritzBox")
-  pihole("Pi-hole w/ WireGuard & DNS")
-  nas("Synology NAS")
+  router("router<br/>(FritzBox)")
+  pihole("RPi<br/>Pi-hole w/ DHCP & DNS<br/>Wireguard")
+  nas("NAS (Synology)")
   proxmox("Proxmox")
 
   cloud --> router
@@ -152,34 +166,48 @@ flowchart LR
   pihole --> proxmox
   pihole --> nas
   proxmox --> nas
+
+  style router fill:#e6ffe6
+  style pihole fill:#ffe4e1
 ```
 
+- FritzBox
+  - disabled DNS & DHCP
+  - enabled DynDNS
+  - configs are easy to backup & restore
+- RPi (Raspberry Pi 2 Model B (!))
+  - [Pi-hole](https://pi-hole.net/): DNS & DHCP
+  - WireGuard (via [PiVPN](https://www.pivpn.io/))
+  - configs are easy to backup & restore
+
+---
+layout: image-right
+image: "/images/hardware-costs.png"
 ---
 
-## Home infrastructure (2/x)
+## Home infrastructure
 
 ```mermaid
 flowchart LR
-
   nas("NAS")
   proxmox("Proxmox")
-
-  proxmox --> nas
+  proxmox --- nas
 ```
 
-- But wait, there is a NAS and a Proxmox server?
-- Let's talk about hardware
+Hardware: Let's talk about money...
 
 ---
 
 ## Hardware (1/2): NAS
 
-NAS
+My old Synology (bought 2014)...
 
 - 4 HDDs
 - costs (mainly the HDDs): 1000 EUR
 - effective storage capacity: 8TB
 - Synology's "RAID-5"
+
+YMMV, but you want something solid & tested.
 
 <img
   class="absolute bottom-20 right-10 w-100"
@@ -191,8 +219,8 @@ NAS
 
 - costs: 320 EUR
 - CPU: Intel Alder Lake N95
-- RAM: **32GB** DDR4 (3200MHz)
-- SSD: **1TB** M.2 NVMe PCIe 3.0 M.2 2280 **(Max 2TB)**
+- RAM: **32GB**
+- SSD: **1TB (max 2TB)**
 
 <img
   class="absolute bottom-20 right-10 w-125"
