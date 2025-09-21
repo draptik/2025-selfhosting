@@ -14,7 +14,7 @@
 Slides 👇
 
 - QR Code or
-- <https://draptik.github.io/2025-09-seneca-selfhosting/>
+- <https://draptik.github.io/2025-09-socrates-at-selfhosting/>
 
 <img
   class="absolute top-10 right-20 h-70"

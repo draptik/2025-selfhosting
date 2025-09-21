@@ -1,4 +1,4 @@
-# Selfhosting / Homeserver
+# My Journey to Selfhosting & Homeserver
 
 Patrick Drechsler
 

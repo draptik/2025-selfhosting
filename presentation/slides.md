@@ -2,14 +2,14 @@
 theme: ./mathema-2023
 defaults:
   layout: "default-with-footer"
-title: Selfhosting / Homeserver 101
-occasion: "SENECA 2025"
-occasionLogoUrl: "./images/logo-seneca24.png"
+title: Selfhosting / Homeserver
+occasion: "SoCraTes AT"
+occasionLogoUrl: "./images/logo_socrates.png"
 company: "MATHEMA GmbH"
 presenter: "Patrick Drechsler"
 contact: "patrick.drechsler@mathema.de"
 info:
-  Selfhosting / Homeserver 101
+  Selfhosting / Homeserver
 layout: cover
 transition: slide-left
 mdc: true
@@ -142,7 +142,6 @@ flowchart LR
   proxmox --> nas
 ```
 
-
 - But wait, there is a NAS and a Proxmox server?
 - Let's talk about hardware
 
@@ -151,9 +150,10 @@ flowchart LR
 ## Hardware (1/2): NAS
 
 NAS: with 4 HDDs
-  - costs: mainly the HDDs (1000 EUR)
-  - space: 8TB
-  - Synology's "RAID-5"
+
+- costs: mainly the HDDs (1000 EUR)
+- space: 8TB
+- Synology's "RAID-5"
 
 <img
   class="absolute bottom-20 right-10 w-100"
