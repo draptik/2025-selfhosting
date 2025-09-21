@@ -149,6 +149,8 @@ flowchart LR
 - Safer, but might involve extra costs
 
 ---
+layout: two-cols-header
+---
 
 ## Home infrastructure: Bird's eye view
 
@@ -158,27 +160,37 @@ flowchart LR
   cloud("internet")
   router("router<br/>(FritzBox)")
   pihole("RPi<br/>Pi-hole w/ DHCP & DNS<br/>Wireguard")
-  nas("NAS (Synology)")
+  nas("NAS")
   proxmox("Proxmox")
 
   cloud --> router
   router --> pihole
   pihole --> proxmox
-  pihole --> nas
   proxmox --> nas
 
   style router fill:#e6ffe6
   style pihole fill:#ffe4e1
 ```
 
-- FritzBox
-  - disabled DNS & DHCP
-  - enabled DynDNS
-  - configs are easy to backup & restore
-- RPi (Raspberry Pi 2 Model B (!))
-  - [Pi-hole](https://pi-hole.net/): DNS & DHCP
-  - WireGuard (via [PiVPN](https://www.pivpn.io/))
-  - configs are easy to backup & restore
+:: left ::
+
+### router (FritzBox)
+
+- I try to keep the router as dumb as possible
+- disabled DNS & DHCP
+- enabled DynDNS
+- [Let's Encrypt](https://letsencrypt.org/): port 80/443 is open ⚠️
+- wireguard port is open
+- configs are easy to backup & restore
+
+:: right ::
+
+### RPi
+
+- Raspberry Pi 2 Model B (!)
+- [Pi-hole](https://pi-hole.net/): DNS & DHCP
+- WireGuard (via [PiVPN](https://www.pivpn.io/))
+- configs are easy to backup & restore
 
 ---
 layout: image-right
@@ -223,7 +235,7 @@ YMMV, but you want something solid & tested.
 - SSD: **1TB (max 2TB)**
 
 <img
-  class="absolute bottom-20 right-10 w-125"
+  class="absolute bottom-20 right-10 w-155"
   src="/images/homeserver.png"
 />
 
