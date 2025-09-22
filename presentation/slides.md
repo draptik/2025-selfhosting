@@ -270,7 +270,7 @@ Alternatives (for pros): kubernetes, nix-os
 
 ---
 
-## Overview
+## Server: Overview
 
 ```mermaid
 flowchart LR
