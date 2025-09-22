@@ -240,31 +240,33 @@ YMMV, but you want something solid & tested.
 />
 
 ---
+layout: image-left
+image: "/images/vps-crazy.png"
+---
 
-## Options for accessing Homeserver
+### Accessing Homeserver
 
 - VPN / Wireguard
 - Public access
 - Geoblocking
+- Thoughts?
 
 ---
+layout: image-right
+image: "/images/rabbit-hole.png"
+---
 
-## Why did I choose Proxmox?
+## Why Proxmox VMs?
 
-Alternatives:
+I am not an expert: The more contained my experiments are, the safer I am.
 
-- kubernetes
-- nix
+- VMs: **containment** -> safety feature
+- builtin **backups**
+- VMs can be **orchestrated** with
+  - Ansible
+  - Terraform
 
-Both are currently too complex for me.
-
-I picked a different rabbit hole:
-
-- Proxmox with VMs and
-  - with Ansible
-  - with Terraform (OpenTofu)
-- Proxmox VMs provide natural containment -> safety feature
-- Proxmox VMs provide an alternative backup strategy
+Alternatives (for pros): kubernetes, nix-os
 
 ---
 
@@ -276,7 +278,7 @@ flowchart LR
   %% Classes
   classDef hidden fill:none,stroke:none;
 
-  %% Placement links first (so we know their indices)
+  %% Placement links first (sm we know their indices)
   proxmox --> spacer
   spacer --> comment2
 
@@ -319,16 +321,35 @@ flowchart LR
 ```
 
 ---
+layout: two-cols-header
+---
 
-## TODOs
+## Outlook
+
+:: left ::
+
+### TODOs
 
 - Setup VMs w/ Terraform
 - Add `fail2ban` to public facing `caddy`
 - Research Virtual Private Server (VPS) - esp. costs
 
----
+:: right ::
 
-## Discussion
+### We can have a look at details
+
+- Proxmox (live)
+- Ansible scripts
+- anything else in my network!
+
+:: bottom ::
+
+Let's talk!
+
+---
+layout: image
+image: "/images/discussion.png"
+---
 
 ---
 src: ./pages/99-end.md
