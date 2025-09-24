@@ -214,7 +214,7 @@ flowchart LR
 
 ### RPi
 
-- Raspberry Pi 2 Model B (!)
+- Raspberry Pi 2 Model B (!) 😎
 - [Pi-hole](https://pi-hole.net/): DNS & DHCP
 - WireGuard (via [PiVPN](https://www.pivpn.io/))
 - configs are easy to backup & restore
@@ -274,9 +274,9 @@ image: "/images/vps-crazy.png"
 ### Accessing Homeserver
 
 - VPN / Wireguard
-- Public access
-- Geoblocking
-- Thoughts?
+- Public access (w/ Geoblocking)
+
+Thoughts? 🤔
 
 ---
 layout: image-right
@@ -285,13 +285,13 @@ image: "/images/rabbit-hole.png"
 
 ## Why Proxmox VMs?
 
-I am not an expert: The more contained my experiments are, the safer I am.
+**I am not an expert**: The more contained my experiments are, the safer I feel.
 
 - VMs: **containment** -> safety feature
 - builtin **backups**
 - VMs can be **orchestrated** with
-  - Ansible
-  - Terraform
+  - **Ansible** (inside the VM)
+  - **Terraform** (spinning up the VM)
 
 Alternatives (for pros): kubernetes, nix-os
 
