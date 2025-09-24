@@ -157,6 +157,9 @@ layout: two-cols-header
 ```mermaid
 flowchart LR
 
+  %% router@{ pos: "t", h: 50, constraint: "on", img: "/images/logo-fritzbox.png", label: "router<br/>(FritzBox)"  }
+  %% pihole@{ pos: "t", h: 50, constraint: "on", img: "/images/logo-pi-hole.png", label: "RPi<br/>Pi-hole w/ DHCP & DNS<br/>Wireguard" }
+
   cloud("internet")
   router("router<br/>(FritzBox)")
   pihole("RPi<br/>Pi-hole w/ DHCP & DNS<br/>Wireguard")
