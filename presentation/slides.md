@@ -50,14 +50,14 @@ layout: two-cols-header
 
 ### 🏠 Homeserver
 
-#### Pros
+#### Pros {#pros}
 
 - full control
 - privacy: all data is yours
 - no vendor lock-in
 - low running costs
 
-#### Cons
+#### Cons {#cons}
 
 - initial hardware investment costs
 - maintenance of all infrastructure
@@ -67,18 +67,42 @@ layout: two-cols-header
 
 ### ☁️ Cloud
 
-#### Pros
+#### Pros {#pros}
 
 - PaaS / SaaS solutions
 - availability / scaling
 - no hardware investment
 - easier setup
 
-#### Cons
+#### Cons {#cons}
 
 - vendor lock-in
 - running costs are difficult to predict
 - trust issues
+
+<style>
+/* remove default bullets only for lists right after “#### Pros / Cons” */
+h4[id^="pros" i] + ul,
+h4[id^="cons" i] + ul {
+  list-style: none;
+  padding-left: 1.0em;
+  margin: 0;
+}
+
+/* Pros: ✅ */
+h4[id^="pros" i] + ul li { position: relative; }
+h4[id^="pros" i] + ul li::before {
+  content: "✅";
+  position: absolute;
+}
+
+/* Cons: ⛔ */
+h4[id^="cons" i] + ul li { position: relative; }
+h4[id^="cons" i] + ul li::before {
+  content: "⛔";
+  position: absolute;
+}
+</style>
 
 ---
 
