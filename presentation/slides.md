@@ -108,14 +108,14 @@ h4[id^="cons" i] + ul li::before {
 
 ## Typical Applications
 
-| app | "before" | "after" |
+| **app** | **"before"** | **"after"** |
 | - | - | - |
-| calendar | Google Calendar | ☁️ Nextcloud (Hetzner) |
-| file sharing | Google Drive | ☁️ Nextcloud (Hetzner) |
-| photos | Google Photos | 🏠 [immich](https://immich.app/) |
-| document management | private git | 🏠 [Paperless-NGX](https://docs.paperless-ngx.com/) |
-| read-it-later | Pocket (Mozilla) | 🏠 [Readeck](https://readeck.org/) |
-| cooking recipes | bookmarks, Chefkoch, etc | 🏠 [Mealie](https://mealie.io/) |
+| 📅 calendar | Google Calendar | ☁️ Nextcloud (Hetzner) |
+| ☁️ file sharing | Google Drive | ☁️ Nextcloud (Hetzner) |
+| 🖼️ photos | Google Photos | 🏠 [immich](https://immich.app/) |
+| 🧑‍💼 document management | private git | 🏠 [Paperless-NGX](https://docs.paperless-ngx.com/) |
+| 🤔 read-it-later | Pocket (Mozilla) | 🏠 [Readeck](https://readeck.org/) |
+| 🧑‍🍳 cooking recipes | bookmarks, Chefkoch, etc | 🏠 [Mealie](https://mealie.io/), [Tandoor](https://tandoor.dev/) |
 
 ---
 
