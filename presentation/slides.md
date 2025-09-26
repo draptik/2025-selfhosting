@@ -69,6 +69,7 @@ layout: two-cols-header
 
 #### Pros {#pros}
 
+- Dedicated machine OR
 - PaaS / SaaS solutions
 - availability / scaling
 - no hardware investment
@@ -259,7 +260,7 @@ YMMV, but you want something solid & tested.
 - costs: 320 EUR
 - CPU: Intel Alder Lake N95
 - RAM: **32GB**
-- SSD: **1TB (max 2TB)**
+- SSD: **1TB (max 8TB)**
 
 <img
   class="absolute bottom-20 right-10 w-155"
@@ -359,6 +360,8 @@ layout: two-cols-header
 
 - Setup VMs w/ Terraform
 - Add `fail2ban` to public facing `caddy`
+- Centralized logging
+- Centralized Monitoring
 - Research Virtual Private Server (VPS) - esp. costs
 
 :: right ::
